@@ -1,0 +1,6 @@
+Unused devDependencies
+* @tailwindcss/postcss
+* @types/react-dom
+* autoprefixer
+* postcss
+* tailwindcss
