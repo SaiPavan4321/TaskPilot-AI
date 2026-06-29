@@ -170,7 +170,7 @@ const TasksPage = () => {
   });
 
   return (
-    <div className="p-8 max-w-6xl mx-auto w-full slide-up">
+    <div className="p-4 md:p-8 max-w-6xl mx-auto w-full slide-up">
       {/* Removed Invisible Overlay */}
 
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
@@ -211,7 +211,7 @@ const TasksPage = () => {
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
-          <div className="flex gap-2 w-full sm:w-auto overflow-x-auto">
+          <div className="flex gap-2 w-full sm:w-auto overflow-x-auto hide-scrollbar pb-1">
             {['All', 'To Do', 'Completed'].map(f => (
               <button 
                 key={f} 
@@ -225,9 +225,9 @@ const TasksPage = () => {
         </div>
 
         {loading ? (
-          <div className="p-8 text-center text-textSecondary">Loading tasks...</div>
+          <div className="p-4 md:p-8 text-center text-textSecondary">Loading tasks...</div>
         ) : filteredTasks.length === 0 ? (
-          <div className="p-16 text-center">
+          <div className="p-8 md:p-16 text-center">
             <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-primary">
               <CheckSquare className="w-8 h-8" />
             </div>

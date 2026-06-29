@@ -86,7 +86,7 @@ const HabitsPage = () => {
   const todayStr = new Date().toISOString().split('T')[0];
 
   return (
-    <div className="p-8 max-w-6xl mx-auto w-full slide-up">
+    <div className="p-4 md:p-8 max-w-6xl mx-auto w-full slide-up">
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="heading-lg">Habits</h1>
@@ -137,7 +137,7 @@ const HabitsPage = () => {
       {loading ? (
         <div className="text-center text-textSecondary p-8">Loading habits...</div>
       ) : habits.length === 0 ? (
-        <div className="glass-panel p-16 text-center">
+        <div className="glass-panel p-8 md:p-16 text-center">
           <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-primary">
             <Activity className="w-8 h-8" />
           </div>

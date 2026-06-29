@@ -46,7 +46,7 @@ const AIPlannerPage = () => {
   };
 
   return (
-    <div className="p-8 max-w-5xl mx-auto w-full slide-up">
+    <div className="p-4 md:p-8 max-w-5xl mx-auto w-full slide-up">
       <div className="text-center mb-10">
         <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 text-primary shadow-inner">
           <Wand2 className="w-8 h-8" />
@@ -90,23 +90,23 @@ const AIPlannerPage = () => {
         >
           <div className="flex items-center justify-between mb-6">
             <h2 className="heading-md">Generated Action Plan</h2>
-            <div className="flex gap-3">
+            <div className="flex gap-3 mt-4 md:mt-0">
               <button 
                 onClick={handleGenerate}
                 disabled={loading || saving}
-                className="btn-secondary flex items-center gap-2 px-4 py-2 rounded-xl"
+                className="btn-secondary flex items-center gap-2 px-4 py-2 rounded-xl flex-1 justify-center md:flex-none"
               >
                 <RotateCcw className="w-4 h-4" /> Regenerate
               </button>
               <button 
                 onClick={handleSaveAll}
                 disabled={saving || tasks.length === 0}
-                className="btn-primary flex items-center gap-2 px-6 py-2 rounded-xl"
+                className="btn-primary flex items-center gap-2 px-6 py-2 rounded-xl flex-1 justify-center md:flex-none"
               >
                 {saving ? (
                   <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
                 ) : <Save className="w-4 h-4" />}
-                Save All Tasks
+                Save All
               </button>
             </div>
           </div>
@@ -130,7 +130,7 @@ const AIPlannerPage = () => {
                   placeholder="Task description..."
                 />
                 
-                <div className="grid grid-cols-2 gap-4 mt-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                   <div>
                     <label className="text-xs text-textSecondary mb-1 block">Deadline</label>
                     <div className="flex items-center gap-2 bg-background/50 rounded-lg px-3 py-2 border border-border">
@@ -159,8 +159,8 @@ const AIPlannerPage = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 mt-4">
-                  <div className="flex-1">
+                <div className="flex flex-col md:flex-row md:items-center gap-4 mt-4">
+                  <div className="flex-1 w-full">
                     <label className="text-xs text-textSecondary mb-1 block">Category</label>
                     <select 
                       value={task.category || 'Work'}
@@ -175,7 +175,7 @@ const AIPlannerPage = () => {
                       <option value="Other">Other</option>
                     </select>
                   </div>
-                  <div className="flex-1">
+                  <div className="flex-1 w-full">
                     <label className="text-xs text-textSecondary mb-1 block">Priority</label>
                     <select 
                       value={task.priority || 'MEDIUM'}

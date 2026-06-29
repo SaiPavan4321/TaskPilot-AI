@@ -32,7 +32,7 @@ const AnalyticsPage = () => {
     fetchStats();
   }, []);
 
-  if (loading) return <div className="p-8 text-textSecondary text-center">Loading analytics...</div>;
+  if (loading) return <div className="p-4 md:p-8 text-textSecondary text-center">Loading analytics...</div>;
 
   const completionData = [
     { name: 'Completed', value: stats?.completed_tasks || 0 },
@@ -41,7 +41,7 @@ const AnalyticsPage = () => {
 
 
   return (
-    <div className="p-8 max-w-6xl mx-auto w-full slide-up">
+    <div className="p-4 md:p-8 max-w-6xl mx-auto w-full slide-up">
       <div className="mb-8">
         <h1 className="heading-lg">Analytics</h1>
         <p className="text-textSecondary mt-2">Deep dive into your productivity patterns.</p>

@@ -135,7 +135,7 @@ const LoginPage = () => {
       </div>
 
       {/* RIGHT PANEL - Form */}
-      <div className="w-full md:w-1/2 flex items-center justify-center p-8 lg:p-16 bg-white overflow-y-auto">
+      <div className="w-full md:w-1/2 flex items-center justify-center p-4 sm:p-8 lg:p-16 bg-white overflow-y-auto">
         <div className="w-full max-w-[400px]">
           
           <div className="flex items-center gap-2 mb-8 cursor-pointer" onClick={() => navigate('/')}>

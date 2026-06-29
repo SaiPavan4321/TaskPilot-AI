@@ -79,7 +79,7 @@ const SettingsPage = () => {
   ];
 
   return (
-    <div className="p-8 max-w-4xl mx-auto w-full slide-up">
+    <div className="p-4 md:p-8 max-w-4xl mx-auto w-full slide-up">
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="heading-lg">Smart Settings</h1>
@@ -196,7 +196,7 @@ const SettingsPage = () => {
               <p className="text-sm text-textSecondary mb-6">Set your limits to help the AI detect burnout risk.</p>
               
               <div className="space-y-6">
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-1.5 text-textSecondary">Daily Focus Limit (Hours)</label>
                     <input type="number" min="1" max="16" className="input-field" value={focusLimit} onChange={(e) => setFocusLimit(e.target.value)} />
@@ -208,7 +208,7 @@ const SettingsPage = () => {
                   </div>
                 </div>
                 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-1.5 text-textSecondary">Current Stress Level</label>
                     <select className="input-field" value={stressLevel} onChange={(e) => setStressLevel(e.target.value)}>
@@ -247,7 +247,7 @@ const SettingsPage = () => {
                   </select>
                 </div>
                 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-1.5 text-textSecondary">Wake Time</label>
                     <input type="time" className="input-field" value={wakeTime} onChange={(e) => setWakeTime(e.target.value)} />

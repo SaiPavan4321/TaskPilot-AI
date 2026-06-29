@@ -1,9 +1,14 @@
 # Stage 1: Build React Frontend
 FROM node:20-alpine as frontend-builder
+WORKDIR /app
+# Copy the root .env so Vite can access it during build
+COPY .env ./
 WORKDIR /app/frontend
 COPY frontend/package*.json ./
 RUN npm install
 COPY frontend/ ./
+# Copy .env into frontend so Vite automatically loads it
+RUN cp ../.env ./.env
 RUN npm run build
 
 # Stage 2: Build FastAPI Backend and Serve React

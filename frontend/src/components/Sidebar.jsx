@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, CheckSquare, Calendar, MessageSquare, Activity, Settings, LogOut, BarChart2 } from 'lucide-react';
+import { LayoutDashboard, CheckSquare, Calendar, MessageSquare, Activity, Settings, LogOut, BarChart2, X } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen, setIsOpen }) => {
   const { logout, user } = useAuth();
+  
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === 'Escape' && setIsOpen) setIsOpen(false);
+    };
+    document.addEventListener('keydown', handleEsc);
+    return () => document.removeEventListener('keydown', handleEsc);
+  }, [setIsOpen]);
   
   const navItems = [
     { name: 'Dashboard', icon: LayoutDashboard, path: '/dashboard' },
@@ -17,19 +25,39 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="w-64 bg-card border-r border-border h-full flex flex-col py-6 fade-in shadow-glass z-10">
-      <div className="px-6 mb-8 flex items-center gap-3">
-        <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold">
-          T
+    <>
+      {/* Mobile Overlay */}
+      {isOpen && (
+        <div 
+          className="fixed inset-0 bg-black/40 z-40 md:hidden fade-in" 
+          onClick={() => setIsOpen && setIsOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+      
+      <div className={`fixed inset-y-0 left-0 w-64 bg-card border-r border-border h-full flex flex-col py-6 shadow-glass z-50 transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+        <div className="px-6 mb-8 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold">
+              T
+            </div>
+            <span className="text-xl font-bold tracking-tight">TaskPilot<span className="text-primary">AI</span></span>
+          </div>
+          <button 
+            className="md:hidden p-1 text-textSecondary hover:text-primary transition-colors"
+            onClick={() => setIsOpen && setIsOpen(false)}
+            aria-label="Close sidebar"
+          >
+            <X className="w-6 h-6" />
+          </button>
         </div>
-        <span className="text-xl font-bold tracking-tight">TaskPilot<span className="text-primary">AI</span></span>
-      </div>
       
       <div className="flex-1 px-4 space-y-1">
         {navItems.map((item) => (
           <NavLink
             key={item.name}
             to={item.path}
+            onClick={() => setIsOpen && setIsOpen(false)}
             className={({ isActive }) =>
               `flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 font-medium ${
                 isActive 
@@ -67,6 +95,7 @@ const Sidebar = () => {
         </button>
       </div>
     </div>
+    </>
   );
 };
 
