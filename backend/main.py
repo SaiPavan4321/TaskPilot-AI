@@ -65,6 +65,12 @@ async def startup_event():
 async def health_check():
     return {"status": "ok", "message": "TASKPILOT AI Backend is running"}
 
+@app.get("/api/config")
+async def get_config():
+    return {
+        "GOOGLE_CLIENT_ID": os.environ.get("GOOGLE_CLIENT_ID") or os.environ.get("VITE_GOOGLE_CLIENT_ID", "")
+    }
+
 # Serve React App
 static_dir = os.path.join(os.path.dirname(__file__), "static")
 if os.path.isdir(static_dir):
