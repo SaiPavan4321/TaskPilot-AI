@@ -29,13 +29,14 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
       {/* Mobile Overlay */}
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-black/40 z-40 md:hidden fade-in" 
+          className="fixed inset-0 bg-black/60 z-50 md:hidden fade-in" 
           onClick={() => setIsOpen && setIsOpen(false)}
           aria-hidden="true"
         />
       )}
       
-      <div className={`fixed inset-y-0 left-0 w-64 bg-card border-r border-border h-full flex flex-col py-6 shadow-glass z-50 transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+      <div className="w-0 md:w-64 shrink-0 md:relative md:z-40">
+        <div className={`fixed inset-y-0 left-0 w-[280px] md:w-full bg-card border-r border-border h-full flex flex-col py-6 shadow-2xl md:shadow-none z-[60] md:z-auto transform transition-transform duration-300 ease-in-out md:absolute md:inset-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}>
         <div className="px-6 mb-8 flex items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold">
@@ -94,7 +95,8 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
           Logout
         </button>
       </div>
-    </div>
+        </div>
+      </div>
     </>
   );
 };
